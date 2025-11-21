@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"> <!-- 矩形形状 -->
+
+    <!-- 1. 浅白色背景（#F8F8F8 是常用浅白，可按需调整深浅） -->
+    <solid android:color="#F8F8F8"/>
+
+    <!-- 2. 可选：添加淡灰色边框（避免背景与页面底色融为一体，可选） -->
+    <stroke
+        android:width="1dp"
+        android:color="#E0E0E0"/>
+
+    <!-- 3. 圆角（关键：让输入框更美观，与抖音风格一致） -->
+    <corners android:radius="12dp"/> <!-- 圆角半径12dp，数值越大越圆 -->
+
+</shape>
