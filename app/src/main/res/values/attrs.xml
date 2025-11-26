@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyCustomButton">
+        <!-- 按钮背景色 -->
+        <attr name="btnBgColor" format="color" />
+        <!-- 圆角半径 -->
+        <attr name="btnCornerRadius" format="dimension" />
+        <!-- 文字颜色 -->
+        <attr name="btnTextColor" format="color" />
+    </declare-styleable>
+</resources>

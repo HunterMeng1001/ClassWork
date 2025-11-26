@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F5F5"
+    android:orientation="horizontal"
+    android:padding="8dp">
+    <Button
+        android:id="@+id/btnNavHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:text="首页"
+        android:textColor="#2196F3"
+        android:textSize="14sp" />
+    <Button
+        android:id="@+id/btnNavInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:text="信息"
+        android:textColor="#2196F3"
+        android:textSize="14sp" />
+    <Button
+        android:id="@+id/btnNavMine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:text="我的"
+        android:textColor="#2196F3"
+        android:textSize="14sp" />
+</LinearLayout>
