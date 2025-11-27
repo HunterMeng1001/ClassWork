@@ -13,16 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassWork">
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainNavigationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InfoListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MineActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
