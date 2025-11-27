@@ -30,10 +30,11 @@
     </LinearLayout>
 
     <!-- 收藏列表 -->
-    <ListView
-        android:id="@+id/listViewFavorites"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFavorites"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#E0E0E0"
-        android:dividerHeight="1dp" />
+        android:clipToPadding="false"
+        android:padding="8dp" />
+
 </LinearLayout>

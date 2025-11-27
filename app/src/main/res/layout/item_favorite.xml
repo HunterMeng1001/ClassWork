@@ -1,55 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="标题"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <TextView
-        android:id="@+id/tvContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="内容摘要"
-        android:textColor="#666666"
-        android:textSize="14sp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="标题"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp" />
 
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="发布日期: 2024-01-15"
-        android:textColor="#999999"
-        android:textSize="12sp"
-        android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内容摘要"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="6dp" />
 
-    <TextView
-        android:id="@+id/tvFavoriteTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="收藏时间: 2024-01-15 12:00:00"
-        android:textColor="#999999"
-        android:textSize="12sp"
-        android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="发布日期: 2024-01-15"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp" />
 
-    <Button
-        android:id="@+id/btnRemove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#F44336"
-        android:text="取消收藏"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvFavoriteTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="收藏时间: 2024-01-15 12:00:00"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F44336"
+            android:text="取消收藏"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:layout_gravity="end" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
