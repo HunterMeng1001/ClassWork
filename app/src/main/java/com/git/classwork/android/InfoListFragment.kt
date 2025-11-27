@@ -6,16 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.graphics.Color
 
-class InfoListActivity : AppCompatActivity() {
+class InfoListFragment : Fragment() {
     private lateinit var recyclerViewInfo: RecyclerView
-    private lateinit var btnNavHome: Button
-    private lateinit var btnNavMine: Button
-    private lateinit var btnNavInfo: Button
     private lateinit var btnAll: Button
     private lateinit var btnTechnology: Button
     private lateinit var btnKnowledge: Button
@@ -28,31 +25,29 @@ class InfoListActivity : AppCompatActivity() {
     private lateinit var currentAdapter: InfoAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private var currentCategory = InfoCategory.ALL
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_info_list)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_info_list, container, false)
         infoManager = InfoManager()
-        favoriteManager = FavoriteManager(this)
-        userManager = UserManager(this)
-        initViews()
+        favoriteManager = FavoriteManager(requireContext())
+        userManager = UserManager(requireContext())
+        initViews(view)
         setupCategoryButtons()
         setupListView()
-        setupListeners()
-        // 设置导航栏选中状态
-        setNavigationSelectedState("info")
+        return view
     }
     
-    private fun initViews() {
-        recyclerViewInfo = findViewById(R.id.recyclerViewInfo)
-        btnNavHome = findViewById(R.id.btnNavHome)
-        btnNavMine = findViewById(R.id.btnNavMine)
-        btnNavInfo = findViewById(R.id.btnNavInfo)
-        btnAll = findViewById(R.id.btnAll)
-        btnTechnology = findViewById(R.id.btnTechnology)
-        btnKnowledge = findViewById(R.id.btnKnowledge)
-        btnFinance = findViewById(R.id.btnFinance)
-        btnSocial = findViewById(R.id.btnSocial)
+    private fun initViews(view: View) {
+        recyclerViewInfo = view.findViewById(R.id.recyclerViewInfo)
+        btnAll = view.findViewById(R.id.btnAll)
+        btnTechnology = view.findViewById(R.id.btnTechnology)
+        btnKnowledge = view.findViewById(R.id.btnKnowledge)
+        btnFinance = view.findViewById(R.id.btnFinance)
+        btnSocial = view.findViewById(R.id.btnSocial)
     }
     
     private fun setupCategoryButtons() {
@@ -100,7 +95,7 @@ class InfoListActivity : AppCompatActivity() {
         val infoList = infoManager.getInfoByCategory(currentCategory)
         
         // 初始化布局管理器
-        layoutManager = LinearLayoutManager(this)
+        layoutManager = LinearLayoutManager(requireContext())
         recyclerViewInfo.layoutManager = layoutManager
         
         // 设置RecyclerView的适配器
@@ -116,50 +111,12 @@ class InfoListActivity : AppCompatActivity() {
         })
     }
     
-    private fun setupListeners() {
-        btnNavHome.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        }
-        
-        btnNavMine.setOnClickListener {
-            startActivity(Intent(this, MineActivity::class.java))
-            finish()
-        }
-    }
-    
-    private fun setNavigationSelectedState(selectedTab: String) {
-        // 重置所有按钮状态
-        btnNavHome.setBackgroundColor(Color.WHITE)
-        btnNavMine.setBackgroundColor(Color.WHITE)
-        btnNavInfo.setBackgroundColor(Color.WHITE)
-        btnNavHome.setTextColor(Color.BLACK)
-        btnNavInfo.setTextColor(Color.BLACK)
-        btnNavMine.setTextColor(Color.BLACK)
-        
-        // 设置选中按钮状态
-        when (selectedTab) {
-            "home" -> {
-                btnNavHome.setBackgroundColor(Color.WHITE)
-                btnNavHome.setTextColor(Color.BLUE)
-            }
-            "info" -> {
-                btnNavInfo.setBackgroundColor(Color.WHITE)
-                btnNavInfo.setTextColor(Color.BLUE)
-            }
-            "mine" -> {
-                btnNavMine.setBackgroundColor(Color.WHITE)
-                btnNavMine.setTextColor(Color.BLUE)
-            }
-        }
-    }
-    
     // 处理收藏操作
     private fun handleFavorite(infoData: InfoData) {
-        // 检查用户是否登录
+        // 检查是否已登录
         if (!userManager.isLoggedIn()) {
-            Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(requireContext(), "请先登录", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
             return
         }
         
@@ -167,7 +124,7 @@ class InfoListActivity : AppCompatActivity() {
             // 取消收藏
             val removed = favoriteManager.removeFavorite(infoData.id.toString())
             if (removed) {
-                Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "取消收藏成功", Toast.LENGTH_SHORT).show()
                 // 刷新列表
                 setupListView()
             }
@@ -183,11 +140,11 @@ class InfoListActivity : AppCompatActivity() {
             )
             val added = favoriteManager.addFavorite(favoriteItem)
             if (added) {
-                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "收藏成功", Toast.LENGTH_SHORT).show()
                 // 刷新列表
                 setupListView()
             } else {
-                Toast.makeText(this, "已收藏", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "已收藏", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -198,7 +155,7 @@ class InfoListActivity : AppCompatActivity() {
     }
     
     // 信息列表适配器
-    inner class InfoAdapter(private val infoList: List<com.git.classwork.android.InfoData>) : RecyclerView.Adapter<InfoAdapter.InfoViewHolder>() {
+    inner class InfoAdapter(private val infoList: List<InfoData>) : RecyclerView.Adapter<InfoAdapter.InfoViewHolder>() {
         
         private var onItemClickListener: OnItemClickListener? = null
         
@@ -213,7 +170,7 @@ class InfoListActivity : AppCompatActivity() {
         }
         
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoViewHolder {
-            val view = LayoutInflater.from(this@InfoListActivity)
+            val view = LayoutInflater.from(requireContext())
                 .inflate(R.layout.list_item_info, parent, false)
             return InfoViewHolder(view)
         }

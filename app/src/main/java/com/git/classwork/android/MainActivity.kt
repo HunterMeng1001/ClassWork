@@ -65,8 +65,8 @@ class MainActivity : Activity() {
                 
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show()
                 
-                // 跳转到首页
-                val intent = Intent(this, HomeActivity::class.java)
+                // 跳转到主导航页面
+                val intent = Intent(this, MainNavigationActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -84,7 +84,7 @@ class MainActivity : Activity() {
             // 模拟微信登录
             userManager.saveUserInfo("微信用户", "wechat@example.com")
             Toast.makeText(this, "微信登录成功", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, MainNavigationActivity::class.java))
             finish()
         }
         
@@ -93,7 +93,7 @@ class MainActivity : Activity() {
             // 模拟Apple登录
             userManager.saveUserInfo("Apple用户", "apple@example.com")
             Toast.makeText(this, "Apple登录成功", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, MainNavigationActivity::class.java))
             finish()
         }
     }

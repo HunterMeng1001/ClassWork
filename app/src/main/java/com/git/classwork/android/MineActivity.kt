@@ -26,7 +26,7 @@ class MineActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mine)
+        setContentView(R.layout.fragment_mine)
         userManager = UserManager(this)
         favoriteManager = FavoriteManager(this)
         

@@ -9,8 +9,7 @@
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_above="@id/bottom_navigation">
+        android:orientation="vertical">
 
         <!-- 用户信息头部 -->
         <LinearLayout
@@ -23,23 +22,26 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
+                <!-- 圆形头像 -->
                 <ImageView
                     android:id="@+id/avatar"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@android:drawable/sym_def_app_icon"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/circle_background"
                     android:scaleType="centerCrop"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp" 
+                    android:layout_marginLeft="10dp"
                     android:contentDescription="用户头像"/>
                     
+                <!-- 用户名和欢迎语，移到头像右侧 -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_below="@id/avatar"
-                    android:layout_marginLeft="10dp">
+                    android:layout_toRightOf="@id/avatar"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="36dp">
                     
                     <TextView
                         android:id="@+id/userName"
@@ -79,7 +81,7 @@
                 android:text="个人信息"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/ic_menu_myplaces"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -97,7 +99,7 @@
                 android:text="我的收藏"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/btn_star_big_on"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -115,7 +117,7 @@
                 android:text="浏览历史"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/ic_menu_recent_history"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -138,7 +140,7 @@
                 android:text="设置"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/ic_menu_preferences"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -156,7 +158,7 @@
                 android:text="关于我们"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/ic_menu_info_details"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -174,7 +176,7 @@
                 android:text="意见反馈"
                 android:background="@android:color/transparent"
                 android:drawableLeft="@android:drawable/ic_menu_send"
-                android:drawableRight="@drawable/rightarrow"
+                android:drawableRight="@drawable/small_right_arrow"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp" />
@@ -182,12 +184,6 @@
 
     </LinearLayout>
     
-    <!-- 通用底部导航栏 - 固定在底部 -->
-    <include 
-        android:id="@+id/bottom_navigation"
-        layout="@layout/bottom_navigation" 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+
 
 </RelativeLayout>

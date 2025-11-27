@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainNavHost">
+
+    <!-- 底部导航的主Host -->
+    <navigation
+        android:id="@+id/mainNavHost"
+        app:startDestination="@id/homeFragment">
+        <!-- 首页 -->
+        <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.git.classwork.android.HomeFragment"
+            android:label="首页"
+            tools:layout="@layout/fragment_home">
+            <action
+                android:id="@+id/action_home_to_infoList"
+                app:destination="@id/infoListFragment" />
+        </fragment>
+
+        <!-- 信息列表 -->
+        <fragment
+            android:id="@+id/infoListFragment"
+            android:name="com.git.classwork.android.InfoListFragment"
+            android:label="信息"
+            tools:layout="@layout/fragment_info_list" />
+
+        <!-- 我的 -->
+        <fragment
+            android:id="@+id/mineFragment"
+            android:name="com.git.classwork.android.MineFragment"
+            android:label="我的"
+            tools:layout="@layout/fragment_mine">
+            <action
+                android:id="@+id/action_mine_to_favorites"
+                app:destination="@id/favoritesFragment" />
+            <action
+                android:id="@+id/action_mine_to_personalInfo"
+                app:destination="@id/personalInfoFragment" />
+        </fragment>
+
+        <!-- 收藏页面 -->
+        <fragment
+            android:id="@+id/favoritesFragment"
+            android:name="com.git.classwork.android.FavoritesFragment"
+            android:label="我的收藏"
+            tools:layout="@layout/activity_favorites" />
+            
+        <!-- 个人信息页面 -->
+        <fragment
+            android:id="@+id/personalInfoFragment"
+            android:name="com.git.classwork.android.PersonalInfoFragment"
+            android:label="个人信息"
+            tools:layout="@layout/fragment_personal_info" />
+    </navigation>
+</navigation>
